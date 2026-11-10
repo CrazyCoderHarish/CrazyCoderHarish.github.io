@@ -90,7 +90,8 @@
   function card(p,i){
     return '<button class="pc" data-i="'+i+'" data-cat="'+p.cat+'" style="--c:'+p.c+'" data-r data-d="'+(i%3)+'">'+
       '<span class="tag">'+p.cat+'</span><h3>'+p.t+'</h3><p>'+p.s+'</p>'+
-      '<span class="no"><span>IN '+p.no+'</span><span class="plus">+</span></span></button>';
+      '<span class="no"><span>IN '+p.no+'</span><span class="plus">+</span></span>'+
+      '<a class="gp" href="https://patents.google.com/patent/IN'+p.no+'A/en" target="_blank" rel="noopener">View publication ↗</a></button>';
   }
 
   document.addEventListener('DOMContentLoaded', function(){
@@ -132,6 +133,7 @@
     /* sheet */
     var sheet = document.getElementById('sheet');
     document.addEventListener('click', function(e){
+      if (e.target.closest('.gp')) return;
       var pc = e.target.closest('.pc');
       if (pc && sheet){
         var p = P[+pc.dataset.i];
@@ -139,7 +141,8 @@
           '<span class="eyebrow" style="color:'+p.c+'">'+p.cat+'</span><h2>'+p.t+'</h2>'+
           p.d.map(function(x){return '<p>'+x+'</p>'}).join('')+
           '<dl class="meta"><div><dt>Application No.</dt><dd>'+p.no+'</dd></div><div><dt>Status</dt><dd>Published, Indian Patent Office, 2026</dd></div>'+
-          (p.w?'<div style="grid-column:1/-1"><dt>With</dt><dd>'+p.w+'</dd></div>':'')+'</dl>';
+          (p.w?'<div style="grid-column:1/-1"><dt>With</dt><dd>'+p.w+'</dd></div>':'')+'</dl>'+
+          '<div class="links"><a class="btn" href="https://patents.google.com/patent/IN'+p.no+'A/en" target="_blank" rel="noopener">View on Google Patents ↗</a><a class="more" href="https://iprsearch.ipindia.gov.in/PublicSearch/" target="_blank" rel="noopener">Verify on Indian Patent Office</a></div>';
         sheet.classList.add('open'); root.style.overflow='hidden'; if(window.__lenis) __lenis.stop();
       } else if (pc && !sheet){ location.href = 'patents.html'; }
       if (e.target.closest('[data-close]')){ sheet.classList.remove('open'); root.style.overflow=''; if(window.__lenis) __lenis.start(); }
@@ -217,6 +220,47 @@
     window.addEventListener('scroll', onScroll, {passive:true});
     onScroll();
 
+    /* tilt + spotlight on cards */
+    if (!reduce && matchMedia('(hover:hover)').matches){
+      document.addEventListener('pointermove', function(e){
+        var c = e.target.closest('.pc,.card,.step,.tile,.stat,.cbox,.orb'); if(!c) return;
+        var r = c.getBoundingClientRect(), x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+        c.style.setProperty('--mx', (x*100)+'%'); c.style.setProperty('--my', (y*100)+'%');
+        if (!c.classList.contains('tile') && !c.classList.contains('orb')) c.style.transform='perspective(900px) rotateX('+((.5-y)*6)+'deg) rotateY('+((x-.5)*8)+'deg) translateY(-4px)';
+      });
+      document.addEventListener('pointerout', function(e){ var c=e.target.closest('.pc,.card,.step,.stat,.cbox'); if(c && !c.contains(e.relatedTarget)) c.style.transform=''; });
+      /* magnetic buttons */
+      document.querySelectorAll('.btn').forEach(function(b){
+        b.addEventListener('pointermove', function(e){ var r=b.getBoundingClientRect(); b.style.transform='translate('+((e.clientX-r.left-r.width/2)*.25)+'px,'+((e.clientY-r.top-r.height/2)*.35)+'px)'; });
+        b.addEventListener('pointerleave', function(){ b.style.transform=''; });
+      });
+    }
+    /* rotating hero word */
+    var rot = document.getElementById('rot');
+    if (rot && !reduce){
+      var words = rot.dataset.words.split('|'), wi = 0;
+      setInterval(function(){
+        rot.classList.add('out');
+        setTimeout(function(){ wi=(wi+1)%words.length; rot.textContent=words[wi]; rot.classList.remove('out'); }, 420);
+      }, 2400);
+    }
+    /* live signal waveform */
+    var cv = document.getElementById('wave');
+    if (cv && !reduce){
+      var cx = cv.getContext('2d'), t=0, mx=.5;
+      window.addEventListener('pointermove', function(e){ mx = e.clientX/innerWidth; });
+      (function draw(){
+        var w=cv.width=cv.offsetWidth*devicePixelRatio, h=cv.height=cv.offsetHeight*devicePixelRatio;
+        cx.clearRect(0,0,w,h);
+        [['rgba(255,90,54,.55)',1],['rgba(255,179,64,.35)',.6],['rgba(138,180,255,.25)',.35]].forEach(function(L,k){
+          cx.beginPath(); cx.strokeStyle=L[0]; cx.lineWidth=1.4*devicePixelRatio;
+          for(var x=0;x<=w;x+=6){ var u=x/w, env=Math.exp(-Math.pow((u-mx)*3,2));
+            var y=h/2+Math.sin(u*28+t*(1+k*.4)+k)*h*.32*L[1]*env*Math.cos(u*6-t*.6); x?cx.lineTo(x,y):cx.moveTo(x,y); }
+          cx.stroke();
+        });
+        t+=.03; requestAnimationFrame(draw);
+      })();
+    }
     requestAnimationFrame(function(){ setTimeout(function(){ root.classList.add('loaded') }, 60) });
     document.getElementById('yr') && (document.getElementById('yr').textContent = new Date().getFullYear());
   });
