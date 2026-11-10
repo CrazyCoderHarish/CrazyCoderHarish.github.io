@@ -373,3 +373,7 @@ footer nav{display:flex;gap:18px}
 .orbcore .o3{width:50%;height:50%;right:10%;bottom:14%;background:radial-gradient(circle,#8ab4ff,rgba(138,180,255,0) 70%);opacity:.6;animation:drift 11s ease-in-out infinite reverse}
 @keyframes pulse{0%,100%{transform:scale(.9);opacity:.75}50%{transform:scale(1.08);opacity:1}}
 @keyframes drift{0%,100%{transform:translate(0,0)}33%{transform:translate(18%,-10%)}66%{transform:translate(-12%,14%)}}
+
+.p-name{position:relative;z-index:2;text-align:center}
+.p-name p{margin-top:14px;color:#a1a1a6;font-size:1.1rem}
+@media (max-width:900px){.p-name{margin-bottom:36px}}
