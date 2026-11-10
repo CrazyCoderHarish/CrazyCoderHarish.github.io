@@ -4,93 +4,99 @@
 
   /* ---------- patent data (from published Indian patent applications) ---------- */
   var P = [
-    {no:'202641124647', cat:'RF & Sensing', c:'#2f6bff',
+    {no:'202641124647', dt:'15 Oct 2026', cat:'RF & Sensing', c:'#2f6bff',
      t:'Passive Sensor Tag Having Dual Stochastic Breakdown Branches Sharing a Common Charge Storage Node',
      s:'A battery-free chipless tag whose reading does not depend on how far away the reader is.',
      d:['Passive tags run on harvested RF energy, so their readings drift whenever incident power changes with distance, orientation or surroundings.',
         'This tag has two matched branches drawing charge from one shared storage node. Each holds a stochastic breakdown element that fires at noise-randomised intervals and triggers a backscatter pulse. One branch carries the sensing element, the other a fixed reference. Because both see the same node and the same threshold noise, the ratio of their firing rates cancels incident power and tracks only the measurand.',
         'No clock, no assigned ID code, no battery.'],
      w:'Dr. Hemanta Kumar Sahu, Angad Reddy, Niranjana Sridhar, Richard Prince'},
-    {no:'202641124648', cat:'Hardware Security', c:'#7a5cff',
+    {no:'202641124648', dt:'15 Oct 2026', cat:'Hardware Security', c:'#7a5cff',
      t:'Method of Certifying an Electronic Component by Cross-Modal Interface Consistency Testing',
      s:'Catches counterfeit and tampered chips by checking whether all their interfaces agree on one physical state.',
      d:['Most chip verification checks each interface on its own, so an attacker only has to imitate each one separately.',
         'Every interface on a die is shaped by the same operating state: temperature, supply voltage, process variation. A probe stimulates the timing-domain and amplitude-domain interfaces, fits a shared operating-state vector with inverse-variance weighting, and computes a cross-modal consistency residual. If it exceeds the bound learned at enrolment, the part fails, even when every interface passes on its own.',
         'It needs no permanent modification to the device.'],
      w:'Dr. Hemanta Kumar Sahu, Angad Reddy, Niranjana Sridhar, Richard Prince'},
-    {no:'202641125346', cat:'Instrumentation', c:'#00a37a',
+    {no:'202641125346', dt:'21 Oct 2026', cat:'Instrumentation', c:'#00a37a',
      t:'Apparatus and Method for Optically Qualified Incremental Impedance Measurement of a Compacted Particulate Specimen',
      s:'Pairs optical deformation imaging with impedance sensing to decide whether an electrical reading can be trusted.',
      d:['Measures the electrical response of compacted particulate materials under incremental loading.',
         'Optical deformation imaging is synchronised with complex impedance measurements over several spatially sensitive current patterns. The system spots local particle rearrangements and qualifies each electrical change as physically valid before accepting it.'],
      w:'Dr. Kavitha Sambasivam, Vishnu Priya, Eraiyanbu B'},
-    {no:'202641125329', cat:'Sustainability', c:'#00a37a',
+    {no:'202641125329', dt:'21 Oct 2026', cat:'Sustainability', c:'#00a37a',
      t:'Biochar Provenance Verification System Using Paired Conversion-Yield and Optical-Reflectance Severity Determinations',
      s:'Verifies a biochar batch’s declared feedstock and pyrolysis severity at the point of receipt.',
      d:['Combines two complementary measurements, conversion yield and optical reflectance, to estimate carbonisation severity.',
         'Disagreement between the two flags inconsistent declarations and possible blends, making biochar assessment at the receiving stage more transparent.'],
      w:'Dr. Kavitha Sambasivam, Eraiyanbu B, Vishnu Priya, Deepak R'},
-    {no:'202641115862', cat:'Product Design', c:'#ff5a36',
+    {no:'202641115862', dt:'28 Sep 2026', cat:'Product Design', c:'#ff5a36',
      t:'Deployable Parting-Vane Apparatus for Identification-Driven Presentation of a Selected Item from a Flexible Container',
      s:'A smart bag that parts its contents to present the exact book or file you asked for.',
      d:['Sensors identify each upright item and its position. Choose one by app, voice or schedule, and deployable supports open clearance around it while steadying its neighbours.',
         'During transport the mechanism doubles as a semi-rigid internal frame, and safety sensing stops motion on obstruction or abnormal load.',
         'Concept by Sachin T. Ponharish led the mechanical design and drafted the patent.'],
      w:'Sachin T (ideator)'},
-    {no:'202641102292', cat:'Healthcare AI', c:'#e2366b',
+    {no:'202641102292', dt:'25 Aug 2026', cat:'Healthcare AI', c:'#e2366b',
      t:'Privacy-Preserving Federated Learning System with Minority Synthesis for Robust Multi-Institutional Clinical Predictions',
      s:'Hospitals train one clinical model together without ever sharing raw patient data.',
      d:['Combines conditional generative models for synthetic minority-class data with differential privacy and secure aggregation.',
         'A minority-aware aggregation step weights each update by effective sample count, minority-class representation and update consistency. It also supports heterogeneous clinical modalities, low-rank adapters for efficient communication, and optional machine unlearning.'],
      w:'Under the guidance of Prof. Kathiravan Srinivasan'},
-    {no:'202641076802', cat:'Smart Buildings', c:'#2f6bff',
+    {no:'202641076802', dt:'21 Jun 2026', cat:'Smart Buildings', c:'#2f6bff',
      t:'Vision-Augmented Multi-Elevator Dispatch System with Predictive AI Control',
      s:'Elevators that see the lobby, predict demand and prioritise accessibility and emergencies.',
      d:['Brings together computer vision, predictive intelligence, smartphone proximity detection, accessibility recognition, emergency detection and federated learning to optimise dispatch while protecting privacy.'],
      w:'Danush P (original concept)'},
-    {no:'202641075276', cat:'Food & AI', c:'#ff9f0a',
+    {no:'202641075276', dt:'18 Jun 2026', cat:'Food & AI', c:'#ff9f0a',
      t:'Multimodal Vision and Sensor Fusion Smart Cabinet for Automated Fruit Analysis and Personalised Dietary Recommendation',
      s:'A kitchen cabinet that recognises produce, judges ripeness and weight, and suggests what to eat.',
      d:['Deep learning, gas sensing and distributed force sensing identify fruits and vegetables, locate them, assess ripeness, estimate weight and compute nutrition, then turn the result into personalised dietary advice.'],
      w:'Dr. G. M. Karthik (mentor); Krishn Sumit Agarwal, Tharakesharasu Thennarasu, Karunakaram Nitya Ramita, Ark Khandelwal'},
-    {no:'202641074228', cat:'Human Sensing', c:'#e2366b',
+    {no:'202641074228', dt:'15 Jun 2026', cat:'Human Sensing', c:'#e2366b',
      t:'Multimodal Stress Detection System Using Instrumented Computer Input Devices',
      s:'KeyStress reads stress from the keyboard and mouse you already use, with no wearables and no cloud.',
      d:['Fuses keystroke dynamics, force sensing, electrodermal activity and IMU data from an instrumented keyboard and pointing device.',
         'It detects stress in real time, identifies its predominant source, computes a composite score and delivers adaptive interventions, all processed on-device.'],
      w:''},
-    {no:'202641068131', cat:'Water', c:'#00b3d6',
+    {no:'202641068131', dt:'30 May 2026', cat:'Water', c:'#00b3d6',
      t:'Adaptive Water Quality Gating Apparatus with Predictive Membrane Protection',
      s:'A smart gate that stops bad water before it reaches a home RO membrane.',
      d:['Continuously monitors TDS, pH and temperature. Adaptive thresholds and temporal pattern analysis decide whether incoming water is fit to filter and close the flow if not, cutting premature membrane wear, maintenance and downtime.'],
      w:'Dr. Jayakumar K, Richard Prince'},
-    {no:'202641058588', cat:'Healthcare AI', c:'#e2366b',
+    {no:'202641058588', dt:'8 May 2026', cat:'Healthcare AI', c:'#e2366b',
      t:'Distributed Public-Health Surveillance System for Privacy-Preserving Detection of Emerging Clinical Event Patterns',
      s:'Federated early-warning for outbreaks across many hospitals, without moving patient records.',
      d:['Facilities keep data local and contribute encrypted model updates. The system flags abnormal clinical patterns, supports spatio-temporal outbreak detection and generates decision-support outputs for clinicians.'],
      w:''},
-    {no:'202641064003', cat:'Energy', c:'#ff9f0a',
+    {no:'202641064003', dt:'21 May 2026', cat:'Energy', c:'#ff9f0a',
      t:'Machine-Learning-Powered IoT-Based Sustainable Home Energy Management System',
      s:'Predicts household demand and schedules appliances around solar, tariffs and comfort.',
      d:['Monitors usage, occupancy, environment, renewable availability and grid parameters. A hybrid edge-cloud architecture forecasts demand, schedules appliances, detects abnormal consumption and minimises cost.'],
      w:''},
-    {no:'202641053872', cat:'Water', c:'#00b3d6',
+    {no:'202641053872', dt:'28 Apr 2026', cat:'Water', c:'#00b3d6',
      t:'Automated Hard Water to Soft Water Conversion and Vending System',
      s:'Unattended softening and dispensing with load-cell accuracy and transaction validation.',
      d:['Load-cell measurement, controlled chemical dosing and regulated flow run under microcontroller closed-loop control, with overflow protection and abnormal-condition detection for safe unattended use.'],
      w:'Dr. Malaya Kumar Hota, Dr. Jayakumar K'},
-    {no:'202641059404', cat:'RF & Sensing', c:'#2f6bff',
+    {no:'202641059404', dt:'10 May 2026', cat:'RF & Sensing', c:'#2f6bff',
      t:'Portable Wind Field Measurement System with Bird Drift Prediction',
      s:'A triangular sensor array that maps local 2-D wind vectors and predicts how birds will drift.',
      d:['Multiple wind sensing elements in a triangular arrangement give wind magnitude, direction and spatial variation, with applications in aviation safety, wildlife monitoring and environmental studies.'],
-     w:'Dr. T. Poornima, Richard Prince'}
+     w:'Dr. T. Poornima, Richard Prince'},
+    {no:'202641031032', dt:'15 Mar 2026', cat:'Smart Buildings', c:'#2f6bff',
+     t:'Smart Classroom Attendance System with RFID Detection, Camera Verification, Blockchain Logging and Occupancy-Based Energy Control',
+     s:'Attendance that can’t be proxied, and a classroom that switches itself off when empty.',
+     d:['RFID detection marks each student, and camera verification confirms the person carrying the tag is really there.',
+        'Every record is written to a tamper-evident blockchain log, while room occupancy drives lighting and power so empty classrooms stop wasting energy.'],
+     w:''}
   ];
   window.__P = P;
 
   function card(p,i){
     return '<button class="pc" data-i="'+i+'" data-cat="'+p.cat+'" style="--c:'+p.c+'" data-r data-d="'+(i%3)+'">'+
       '<span class="tag">'+p.cat+'</span><h3>'+p.t+'</h3><p>'+p.s+'</p>'+
-      '<span class="no"><span>IN '+p.no+'</span><span class="plus">+</span></span>'+
+      '<span class="no"><span>IN '+p.no+' · '+p.dt+'</span><span class="plus">+</span></span>'+
       '<a class="gp" href="https://patents.google.com/patent/IN'+p.no+'A/en" target="_blank" rel="noopener">View publication ↗</a></button>';
   }
 
@@ -140,7 +146,7 @@
         sheet.querySelector('.body').innerHTML =
           '<span class="eyebrow" style="color:'+p.c+'">'+p.cat+'</span><h2>'+p.t+'</h2>'+
           p.d.map(function(x){return '<p>'+x+'</p>'}).join('')+
-          '<dl class="meta"><div><dt>Application No.</dt><dd>'+p.no+'</dd></div><div><dt>Status</dt><dd>Published, Indian Patent Office, 2026</dd></div>'+
+          '<dl class="meta"><div><dt>Application No.</dt><dd>'+p.no+'</dd></div><div><dt>Status</dt><dd>Published '+(p.dt||'2026')+', Indian Patent Office</dd></div>'+
           (p.w?'<div style="grid-column:1/-1"><dt>With</dt><dd>'+p.w+'</dd></div>':'')+'</dl>'+
           '<div class="links"><a class="btn" href="https://patents.google.com/patent/IN'+p.no+'A/en" target="_blank" rel="noopener">View on Google Patents ↗</a><a class="more" href="https://iprsearch.ipindia.gov.in/PublicSearch/" target="_blank" rel="noopener">Verify on Indian Patent Office</a></div>';
         sheet.classList.add('open'); root.style.overflow='hidden'; if(window.__lenis) __lenis.stop();
