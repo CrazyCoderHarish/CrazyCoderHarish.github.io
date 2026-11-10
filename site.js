@@ -96,8 +96,7 @@
   function card(p,i){
     return '<button class="pc" data-i="'+i+'" data-cat="'+p.cat+'" style="--c:'+p.c+'" data-r data-d="'+(i%3)+'">'+
       '<span class="tag">'+p.cat+'</span><h3>'+p.t+'</h3><p>'+p.s+'</p>'+
-      '<span class="no"><span>IN '+p.no+' · '+p.dt+'</span><span class="plus">+</span></span>'+
-      '<a class="gp" data-no="'+p.no+'" href="https://iprsearch.ipindia.gov.in/PublicSearch/" target="_blank" rel="noopener">Verify on IP India ↗</a></button>';
+      '<span class="no"><span>IN '+p.no+' · '+p.dt+'</span><span class="plus">+</span></span>'+'</button>';
   }
 
   document.addEventListener('DOMContentLoaded', function(){
@@ -147,8 +146,7 @@
           '<span class="eyebrow" style="color:'+p.c+'">'+p.cat+'</span><h2>'+p.t+'</h2>'+
           p.d.map(function(x){return '<p>'+x+'</p>'}).join('')+
           '<dl class="meta"><div><dt>Application No.</dt><dd>'+p.no+'</dd></div><div><dt>Status</dt><dd>Published '+(p.dt||'2026')+', Indian Patent Office</dd></div>'+
-          (p.w?'<div style="grid-column:1/-1"><dt>With</dt><dd>'+p.w+'</dd></div>':'')+'</dl>'+
-          '<div class="links"><a class="btn gp2" data-no="'+p.no+'" href="https://iprsearch.ipindia.gov.in/PublicSearch/" target="_blank" rel="noopener">Verify on IP India ↗</a><span class="cp" style="color:var(--muted);font-size:.9rem">Application No. '+p.no+' is copied when you click, so you can paste it into the search.</span></div>';
+          (p.w?'<div style="grid-column:1/-1"><dt>With</dt><dd>'+p.w+'</dd></div>':'')+'</dl>';
         sheet.classList.add('open'); root.style.overflow='hidden'; if(window.__lenis) __lenis.stop();
       } else if (pc && !sheet){ location.href = 'patents.html'; }
       if (e.target.closest('[data-close]')){ sheet.classList.remove('open'); root.style.overflow=''; if(window.__lenis) __lenis.start(); }
