@@ -377,3 +377,8 @@ footer nav{display:flex;gap:18px}
 .p-name{position:relative;z-index:2;text-align:center}
 .p-name p{margin-top:14px;color:#a1a1a6;font-size:1.1rem}
 @media (max-width:900px){.p-name{margin-bottom:36px}}
+
+.profile{min-height:auto;display:block;padding:110px 0}
+.orbgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:10px}
+.orbgrid .orb{position:relative;max-width:none;margin:0;transform:none!important}
+@media (max-width:900px){.orbgrid{grid-template-columns:1fr 1fr}}
